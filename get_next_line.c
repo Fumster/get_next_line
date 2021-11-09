@@ -6,7 +6,7 @@
 /*   By: fchrysta <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 06:43:19 by fchrysta          #+#    #+#             */
-/*   Updated: 2021/11/08 22:41:23 by fchrysta         ###   ########.fr       */
+/*   Updated: 2021/11/09 21:09:56 by fchrysta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,72 +18,64 @@ int	ft_strlen(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i])
+	if (str)
+	{
+		while (str[i])
 		i++;
+	}
 	return (i);
 }
 
-void	ft_append_line(char *string, t_list *list)  // todo split to  2 functions
+void	ft_append_line(char *string, t_list *list)  // ready
 {
+	char	zero[1];
 	char	*join;
 	int		i;
 	int		j;
 
-	i = 0;
+	zero[0] = 0;
 	j = 0;
-	join = string
-	while (join + i)
-	{
-		if (list->tmp_string && list->tmp_string[i])
-			i++;
-		if (!join + i)
-			break;
-		i++;
-	}
+	if (!list->tmp_string)
+		list->tmp_string = zero
+	i = ft_strlen(string) + ft_strlen(list->tmp_string);
 	join = (char *)malloc(sizeof (char) * i + 1);
+	i = 0;
 	if (join)
 	{
-		if (list->tmp_string)
-		{
-			i = 0;
-			while (string[i])
-			{
-				join[i] = string[i];
-				i++;
-			}
-			while (buf [j])
-			{
-				join[i] = buf[j];
-				i++;
-				j++;
-			}
-			join[i] = 0;
-		}
-		else	
-			list->tmp_string = join;
+		while (list->tmp_string[i])
+			join[i] = list->tmp_string[i++];
+		while (sring[j])
+			join[i++] = string[j++]
+		join[i] = 0;
+		free(list->tmp_string);
+		list->tmp_string = join;
 	}
+	else
+		free(list->tmp_string);
 }
 
-t_list	*find_list_by_fd(int fd, t_list *list) // ready, return list with fd or new list, if error return NULL
+t_list	*find_list_by_fd(int fd, t_list **list) // ready, return list with fd or new list, if error return NULL
 {
 	t_list *last_list;
+	t_list *new_list;
 
-	last_list = list;
+	last_list = *list;
+	new_list = *list;
 	while (last_list && last_list->next && last_list->fd != fd)
 		last_list = last_list->next;
-	if (!last_list || last_list->fd != fd)
+	if (!*last_list || last_list->fd != fd)
 	{
-		list = (t_list *) malloc(sizeof(t_list));
-		if (list)
+		new_list = (t_list *) malloc(sizeof(t_list));
+		if (new_list)
 		{
-			list->tmp_string = NULL;
-			list->ret_string = NULL;
-			list->fd = fd;
+			new_list->tmp_string = NULL;
+			new_list->ret_string = NULL;
+			new_list->fd = fd;
 			if (last_list)
-				last_list->next = list;
+				last_list->next = new_list;
 		}
 	}
-	return (list);
+	return (new_list);
 }
 
 void	read_file_to_list(t_list *list) // ready, list->tmp_str comes always NULL
@@ -172,11 +164,18 @@ char	*get_next_line(int fd)
 
 	if (fd <= 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	this_list = find_list_by_fd(fd, list);
+	this_list = find_list_by_fd(fd, &list);
+	if (this_list && this_list->ret_string)
+	{
+		free this_list->ret_string;
+		this_list->ret_string = NULL;
+	}
 	if (this_list && !this_list->tmp_string)
 		read_file_to_list(this_list);
-	fill_ret_string_in_list(this_list);
-	clear lists(&this_list, &list);
+	if (this_list && this_list->tmp_string)
+		fill_ret_string_in_list(this_list);
+	if (this_list && !this_list->ret_string)
+		delete_list(&list, &this_list);
 	if (this_list)
 		return (this_list->ret_string);
 	else
