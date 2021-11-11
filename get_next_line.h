@@ -6,7 +6,6 @@
 typedef struct	s_list
 {
 	char			*tmp_string;
-	char			*ret_string;
 	int				fd;
 	struct s_list	*next;
 }	t_list;
