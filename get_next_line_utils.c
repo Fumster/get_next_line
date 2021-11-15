@@ -6,13 +6,14 @@
 /*   By: fchrysta <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:40:27 by fchrysta          #+#    #+#             */
-/*   Updated: 2021/11/11 22:17:56 by fchrysta         ###   ########.fr       */
+/*   Updated: 2021/11/15 21:03:06 by fchrysta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(char *str) // 1 function
+// 1 function
+int	ft_strlen(char *str)
 {
 	int	i;
 
@@ -25,7 +26,8 @@ int	ft_strlen(char *str) // 1 function
 	return (i);
 }
 
-int	ft_get_endline_index(char *str) // 2 function
+// 2 function
+int	ft_get_endline_index(char *str)
 {
 	int	i;
 
@@ -42,7 +44,8 @@ int	ft_get_endline_index(char *str) // 2 function
 	return (-1);
 }
 
-char	*cut_line(char *src, int begin, int end) // 3 function
+// 3 function
+char	*cut_line(char **src, int begin, int end)
 {
 	char	*dest;
 	int		i;
@@ -53,13 +56,16 @@ char	*cut_line(char *src, int begin, int end) // 3 function
 		return (NULL);
 	while (begin < end)
 	{
-		dest[i] = src[begin];
+		dest[i] = *src[begin];
 		i++;
 		begin++;
 	}
+	dest[i] = 0;
+	free (src)
 	return (dest);
 }
 
+// 4 function
 char	*append_lines(char *begin, char *end)
 {
 	int		i;
@@ -76,12 +82,13 @@ char	*append_lines(char *begin, char *end)
 			dst[i] = begin [i];
 			i++;
 		}
-		while (end[j])
+		while (end && end[j])
 		{
 			dst[i] = end[j];
 			i++;
 			j++;
 		}
+		dst[i] = 0;
 	}
 	return (dst);
 }
