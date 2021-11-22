@@ -6,7 +6,7 @@
 /*   By: fchrysta <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 06:43:19 by fchrysta          #+#    #+#             */
-/*   Updated: 2021/11/22 20:39:01 by fchrysta         ###   ########.fr       */
+/*   Updated: 2021/11/22 21:51:28 by fchrysta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ char	*get_next_line(int fd)
 	char			*ret_string;
 
 	ret_string = NULL;
-	if (fd <= 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	this_list = find_list_by_fd(fd, &list);
 	if (this_list)
