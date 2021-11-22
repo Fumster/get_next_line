@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fchrysta <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/22 20:44:34 by fchrysta          #+#    #+#             */
-/*   Updated: 2021/11/22 20:47:20 by fchrysta         ###   ########.fr       */
+/*   Created: 2021/11/22 20:51:59 by fchrysta          #+#    #+#             */
+/*   Updated: 2021/11/22 20:53:39 by fchrysta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # if BUFFER_SIZE < 0
 #  undef BUFFER_SIZE

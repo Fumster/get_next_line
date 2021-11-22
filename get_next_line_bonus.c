@@ -6,11 +6,11 @@
 /*   By: fchrysta <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 06:43:19 by fchrysta          #+#    #+#             */
-/*   Updated: 2021/11/22 20:39:01 by fchrysta         ###   ########.fr       */
+/*   Updated: 2021/11/22 20:40:25 by fchrysta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 // 1 function
 t_list	*find_list_by_fd(int fd, t_list **list)

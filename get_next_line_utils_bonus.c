@@ -6,11 +6,11 @@
 /*   By: fchrysta <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 19:40:27 by fchrysta          #+#    #+#             */
-/*   Updated: 2021/11/22 20:40:54 by fchrysta         ###   ########.fr       */
+/*   Updated: 2021/11/22 20:41:15 by fchrysta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 // 1 function
 int	ft_strlen(char *str)
