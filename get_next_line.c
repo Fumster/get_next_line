@@ -46,12 +46,10 @@ void	read_file_to_list(t_list *list)
 	char	buf[BUFFER_SIZE + 1];
 	int		readed_char_num;
 	int		is_readed_full_line;
-	int		i;
 
 	is_readed_full_line = 0;
 	while (!is_readed_full_line)
 	{
-		i = 0;
 		readed_char_num = read (list->fd, buf, BUFFER_SIZE);
 		if (readed_char_num <= 0)
 			is_readed_full_line = 1;
