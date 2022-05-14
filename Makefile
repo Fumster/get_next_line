@@ -12,14 +12,14 @@ FLAGS =			-Wall -Wextra -Werror
 
 .PHONY: all re clean fclean
 
-all	:			$(SOURCES) $(NAME)
+all	:			$(NAME)
 
 
 $(NAME)	:		$(OBJECTS)
 					ar -rc $(NAME) $^
 
-$(OBJECTS) :	$(SOURCES) $(HEADER)
-				$(CC) $(FLAGS) $(SOURCES) -c
+%.o :	%.c $(HEADER)
+		$(CC) $(FLAGS) $< -c
 
 clean :
 					rm -rf $(OBJECTS)
